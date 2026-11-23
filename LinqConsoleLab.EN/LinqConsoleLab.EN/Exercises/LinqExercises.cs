@@ -66,13 +66,13 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task04_FirstAnalyticsCourse()
     {
-        var maybe = UniversityData.Courses.FirstOrDefault(c => c.Category == "Analytics");
-        if (maybe == null)
+        var courseAnalytic = UniversityData.Courses.FirstOrDefault(c => c.Category == "Analytics");
+        if (courseAnalytic == null)
         {
             return ["Course not found"];
         }
 
-        return [$"{maybe.Title} {maybe.StartDate}"];
+        return [$"{courseAnalytic.Title} {courseAnalytic.StartDate}"];
     
         //throw NotImplemented(nameof(Task04_FirstAnalyticsCourse));
     }
@@ -91,7 +91,9 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task05_IsThereAnyInactiveEnrollment()
     {
-        throw NotImplemented(nameof(Task05_IsThereAnyInactiveEnrollment));
+        var isInactiveEnrollment = UniversityData.Enrollments.Any(e => !e.IsActive);
+        return [$"{isInactiveEnrollment}"];
+        //throw NotImplemented(nameof(Task05_IsThereAnyInactiveEnrollment));
     }
 
     /// <summary>
@@ -106,7 +108,9 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task06_DoAllLecturersHaveDepartment()
     {
-        throw NotImplemented(nameof(Task06_DoAllLecturersHaveDepartment));
+        var allHaveDepartment = UniversityData.Lecturers.All(l => !string.IsNullOrWhiteSpace(l.Department));
+        return [$"{allHaveDepartment}"];
+        //throw NotImplemented(nameof(Task06_DoAllLecturersHaveDepartment));
     }
 
     /// <summary>
@@ -120,7 +124,9 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task07_CountActiveEnrollments()
     {
-        throw NotImplemented(nameof(Task07_CountActiveEnrollments));
+        var numberActiveEnrollment = UniversityData.Enrollments.Count(e => e.IsActive);
+        return [$"{numberActiveEnrollment}"];
+        //throw NotImplemented(nameof(Task07_CountActiveEnrollments));
     }
 
     /// <summary>
