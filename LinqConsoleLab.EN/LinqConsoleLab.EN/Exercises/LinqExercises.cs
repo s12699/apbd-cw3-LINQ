@@ -140,7 +140,8 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task08_DistinctStudentCities()
     {
-        throw NotImplemented(nameof(Task08_DistinctStudentCities));
+        return UniversityData.Students.Select(s => s.City).Distinct().OrderBy(c => c);
+        //throw NotImplemented(nameof(Task08_DistinctStudentCities));
     }
 
     /// <summary>
@@ -155,7 +156,9 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task09_ThreeNewestEnrollments()
     {
-        throw NotImplemented(nameof(Task09_ThreeNewestEnrollments));
+        return UniversityData.Enrollments.OrderByDescending(e => e.EnrollmentDate).Take(3)
+            .Select(e => $"Date: {e.EnrollmentDate}, StudentID: {e.StudentId}, CourseID: {e.CourseId}");
+        //throw NotImplemented(nameof(Task09_ThreeNewestEnrollments));
     }
 
     /// <summary>
@@ -171,7 +174,9 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task10_SecondPageOfCourses()
     {
-        throw NotImplemented(nameof(Task10_SecondPageOfCourses));
+        return UniversityData.Courses.OrderBy(c => c.Title).Skip(2).Take(2)
+            .Select(c => $"Title: {c.Title}, Category: {c.Category}");
+        //throw NotImplemented(nameof(Task10_SecondPageOfCourses));
     }
 
     /// <summary>
@@ -186,7 +191,14 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task11_JoinStudentsWithEnrollments()
     {
-        throw NotImplemented(nameof(Task11_JoinStudentsWithEnrollments));
+        return UniversityData.Students.Join(UniversityData.Enrollments, s => s.Id, e => e.StudentId,
+            (s, e) => new
+            {
+                StudentFirstName = s.FirstName,
+                StudentLastName = s.LastName,
+                EnrollmentDate = e.EnrollmentDate
+            }).Select(x => $"{x.StudentFirstName} {x.StudentLastName} DATE: {x.EnrollmentDate}");
+        //throw NotImplemented(nameof(Task11_JoinStudentsWithEnrollments));
     }
 
     /// <summary>

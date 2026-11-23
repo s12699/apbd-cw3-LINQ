@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinqConsoleLab.EN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9e6cd4dcf8aeb5d5a3e0846a3775306a5bdc4c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5262845ad0445dd459f5190e0e467cc91f48bb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinqConsoleLab.EN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinqConsoleLab.EN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
