@@ -214,7 +214,15 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task12_StudentCoursePairs()
     {
-        throw NotImplemented(nameof(Task12_StudentCoursePairs));
+        return UniversityData.Enrollments
+            .Join(UniversityData.Students, e => e.StudentId, s => s.Id, (e, s) => new { e, s })
+            .Join(UniversityData.Courses, es => es.e.CourseId, c => c.Id, (es, c) => new
+            {
+                FirstName = es.s.FirstName,
+                LastName = es.s.LastName,
+                Title = c.Title
+            }).Select(x => $"{x.FirstName} {x.LastName}: {x.Title}");
+        //throw NotImplemented(nameof(Task12_StudentCoursePairs));
     }
 
     /// <summary>
