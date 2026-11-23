@@ -34,7 +34,7 @@ public sealed class LinqExercises
     public IEnumerable<string> Task02_StudentEmailAddresses()
     {
         return UniversityData.Students.Select(s => s.Email);
-        throw NotImplemented(nameof(Task02_StudentEmailAddresses));
+        //throw NotImplemented(nameof(Task02_StudentEmailAddresses));
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ public sealed class LinqExercises
     {
         return UniversityData.Students.OrderBy(s => s.LastName).ThenBy(s => s.FirstName)
             .Select(s => $"{s.IndexNumber}: {s.FirstName} {s.LastName}");
-        throw NotImplemented(nameof(Task03_StudentsSortedAlphabetically));
+        //throw NotImplemented(nameof(Task03_StudentsSortedAlphabetically));
     }
 
     /// <summary>
@@ -66,7 +66,15 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task04_FirstAnalyticsCourse()
     {
-        throw NotImplemented(nameof(Task04_FirstAnalyticsCourse));
+        var maybe = UniversityData.Courses.FirstOrDefault(c => c.Category == "Analytics");
+        if (maybe == null)
+        {
+            return ["Course not found"];
+        }
+
+        return [$"{maybe.Title} {maybe.StartDate}"];
+    
+        //throw NotImplemented(nameof(Task04_FirstAnalyticsCourse));
     }
 
     /// <summary>
