@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "V/+u9h3JYQM=",
+  "success": true,
+  "projectFilePath": "/home/boss/Documents/PJATK/APBD/03/Code/apbd-cw3-LINQ/LinqConsoleLab.EN/LinqConsoleLab.EN/LinqConsoleLab.EN.csproj",
+  "expectedPackageFiles": [
+    "/home/boss/.nuget/packages/microsoft.netcore.app.ref/9.0.21/microsoft.netcore.app.ref.9.0.21.nupkg.sha512",
+    "/home/boss/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.21/microsoft.aspnetcore.app.ref.9.0.21.nupkg.sha512",
+    "/home/boss/.nuget/packages/microsoft.netcore.app.host.linux-x64/9.0.21/microsoft.netcore.app.host.linux-x64.9.0.21.nupkg.sha512"
+  ],
+  "logs": []
+}
