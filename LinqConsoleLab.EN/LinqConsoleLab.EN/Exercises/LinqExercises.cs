@@ -237,7 +237,11 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task13_GroupEnrollmentsByCourse()
     {
-        throw NotImplemented(nameof(Task13_GroupEnrollmentsByCourse));
+        return UniversityData.Enrollments.Join(UniversityData.Courses, e => e.CourseId, c => c.Id, (e, c) => new
+        {
+            Title = c.Title
+        }).GroupBy(ec => ec.Title).Select(g => $"{g.Key}: {g.Count()}");
+        //hrow NotImplemented(nameof(Task13_GroupEnrollmentsByCourse));
     }
 
     /// <summary>
@@ -254,7 +258,16 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task14_AverageGradePerCourse()
     {
-        throw NotImplemented(nameof(Task14_AverageGradePerCourse));
+        return UniversityData.Enrollments
+            .Join(UniversityData.Courses, e => e.CourseId, c => c.Id, (e, c) => new
+        {
+            Title = c.Title,
+            FinalGrade = e.FinalGrade
+        })
+            .Where(ec => ec.FinalGrade != null)
+            .GroupBy(ec => ec.Title)
+            .Select(g => $"{g.Key}: {g.Average(x => x.FinalGrade):F2}");
+        //throw NotImplemented(nameof(Task14_AverageGradePerCourse));
     }
 
     /// <summary>
@@ -270,7 +283,14 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task15_LecturersAndCourseCounts()
     {
-        throw NotImplemented(nameof(Task15_LecturersAndCourseCounts));
+        return UniversityData.Lecturers
+            .GroupJoin(UniversityData.Courses, l => l.Id, c => c.LecturerId, (l, e) => new
+            {
+                FirstName = l.FirstName,
+                LastName = l.LastName,
+                Lecturer = e.Select(cc => cc.Id)
+            }).Select(x => $"{x.FirstName} {x.LastName} {x.Lecturer.Count()}");
+        //throw NotImplemented(nameof(Task15_LecturersAndCourseCounts));
     }
 
     /// <summary>
@@ -287,7 +307,22 @@ public sealed class LinqExercises
     /// </summary>
     public IEnumerable<string> Task16_HighestGradePerStudent()
     {
-        throw NotImplemented(nameof(Task16_HighestGradePerStudent));
+        return UniversityData.Students.Join(
+                UniversityData.Enrollments,
+                s => s.Id,
+                e => e.StudentId,
+                (s, e) => new
+                {
+                    FirstName = s.FirstName,
+                    LastName = s.LastName,
+                    FinalGrade = e.FinalGrade
+                }).Where(se => se.FinalGrade != null)
+            .GroupBy(se => new
+            {
+                se.FirstName,
+                se.LastName
+            }).Select(x => $"{x.Key.FirstName} {x.Key.LastName}: {x.Max(y => y.FinalGrade):F2}");
+        //throw NotImplemented(nameof(Task16_HighestGradePerStudent));
     }
 
     /// <summary>
